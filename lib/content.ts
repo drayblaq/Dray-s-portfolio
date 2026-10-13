@@ -3,7 +3,7 @@ export const profile = {
   shortName: "Alabi Damilare",
   school: "Epitech Paris, PGE4",
   location: "Paris, Ile de France",
-  email: "alabidamilare98@gmail.com",
+  email: "damilare.alabi.dev@gmail.com",
   linkedin:
     "https://www.linkedin.com/in/alabi-damilare-2b500227b/recent-activity/all/?skipRedirect=true",
   instagram: "https://www.instagram.com/dray_blaq/",
