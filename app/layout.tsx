@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Alabi Oluwa Damilare Samuel | Full stack & mobile developer",
+  title: "Alabi Oluwa Damilare Samuel | Learning full stack & DevOps",
   description:
-    "Junior full stack and mobile developer in Paris. Flutter, Next.js and Supabase. Founder of Sedo, a parcel delivery app for Cotonou, Benin.",
+    "Learning full stack development and training to become a DevOps engineer, based in Paris. Flutter, Next.js and Supabase. Founder of Sedo, a parcel delivery app for Cotonou, Benin.",
   openGraph: {
     title: "Alabi Oluwa Damilare Samuel",
     description:
-      "Flutter, Next.js and Supabase developer based in Paris. Founder of Sedo.",
+      "Learning full stack & DevOps, based in Paris. Flutter, Next.js and Supabase. Founder of Sedo.",
     type: "website",
   },
 };

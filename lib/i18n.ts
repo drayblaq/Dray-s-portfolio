@@ -4,12 +4,12 @@ export const translations = {
   en: {
     nav: { about: "about", work: "work", skills: "skills", contact: "contact" },
     eyebrow: {
-      role: "Full stack, mobile first",
-      experience: "1 to 2 years building products",
+      role: "Learning full stack & DevOps",
+      experience: "Shipping real products along the way",
     },
     hero: {
       lead:
-        "I build and ship real products, not classroom exercises. Flutter, Next.js and Supabase developer based in Paris, currently studying at Epitech.",
+        "I'm still learning full stack development and training to become a DevOps engineer, but I build and ship real products, not just classroom exercises. Flutter, Next.js and Supabase, based in Paris, currently studying at Epitech.",
       available: "Open to internships and freelance work",
       cta: "Get in touch",
     },
@@ -17,11 +17,11 @@ export const translations = {
       title: "Who am I?",
       lead: "A developer who ships what he builds",
       p1:
-        "Junior full stack and mobile developer based in Paris, studying at Epitech (PGE4), with 1 to 2 years of hands on experience building products that real people use.",
+        "I'm new to full stack development, based in Paris and studying at Epitech (PGE4). I'm also learning to become a DevOps engineer, picking up both by building products that real people actually use.",
       p2:
         "I am Alabi Damilare. I treat code as a craft and a product decision at the same time: clean interfaces, fast apps, and a backend I can trust in production. Founder of Sedo, a parcel delivery app live for Cotonou, Benin.",
       p3:
-        "I work across the full stack, from Flutter mobile apps to Next.js web apps and Supabase or Firebase backends, and I keep shipping side projects to stay sharp.",
+        "I'm learning across the stack, from Flutter mobile apps to Next.js web apps, Supabase or Firebase backends, and Docker and CI/CD on the DevOps side, and I keep shipping side projects to learn faster.",
       facts: {
         school: "school",
         role: "role",
@@ -56,12 +56,12 @@ export const translations = {
   fr: {
     nav: { about: "profil", work: "projets", skills: "compétences", contact: "contact" },
     eyebrow: {
-      role: "Full stack, mobile first",
-      experience: "1 à 2 ans à construire des produits",
+      role: "J'apprends le full stack & le DevOps",
+      experience: "Je livre de vrais produits en chemin",
     },
     hero: {
       lead:
-        "Je construis et je livre de vrais produits, pas des exercices d'école. Développeur Flutter, Next.js et Supabase basé à Paris, actuellement étudiant à Epitech.",
+        "J'apprends encore le développement full stack et je me forme pour devenir ingénieur DevOps, mais je construis et je livre de vrais produits, pas juste des exercices d'école. Flutter, Next.js et Supabase, basé à Paris, actuellement étudiant à Epitech.",
       available: "Ouvert aux stages et missions freelance",
       cta: "Me contacter",
     },
@@ -69,11 +69,11 @@ export const translations = {
       title: "Qui suis-je ?",
       lead: "Un développeur qui livre ce qu'il construit",
       p1:
-        "Développeur full stack et mobile junior basé à Paris, étudiant à Epitech (PGE4), avec 1 à 2 ans d'expérience concrète dans la construction de produits utilisés par de vraies personnes.",
+        "Je débute en développement full stack, basé à Paris et étudiant à Epitech (PGE4). J'apprends aussi à devenir ingénieur DevOps, les deux en construisant des produits utilisés par de vraies personnes.",
       p2:
         "Je suis Alabi Damilare. Je vois le code comme un artisanat autant qu'une décision produit : des interfaces propres, des applis rapides, et un backend fiable en production. Fondateur de Sedo, une app de livraison de colis en service à Cotonou, au Bénin.",
       p3:
-        "Je travaille sur toute la stack, des apps mobiles Flutter aux apps web Next.js et aux backends Supabase ou Firebase, et je continue de livrer des projets perso pour rester affilé.",
+        "J'apprends sur toute la stack, des apps mobiles Flutter aux apps web Next.js, aux backends Supabase ou Firebase, et côté DevOps avec Docker et le CI/CD, et je continue de livrer des projets perso pour apprendre plus vite.",
       facts: {
         school: "école",
         role: "rôle",
