@@ -6,14 +6,19 @@ import { profile, projects, skills } from "@/lib/content";
 import { translations, type Lang } from "@/lib/i18n";
 
 const LANG_KEY = "lang";
+const THEME_KEY = "theme";
+type Theme = "dark" | "light";
 
 export default function Home() {
   const [lang, setLang] = useState<Lang>("en");
+  const [theme, setTheme] = useState<Theme>("dark");
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(LANG_KEY);
-      if (saved === "en" || saved === "fr") setLang(saved);
+      const savedLang = localStorage.getItem(LANG_KEY);
+      if (savedLang === "en" || savedLang === "fr") setLang(savedLang);
+      const savedTheme = localStorage.getItem(THEME_KEY);
+      if (savedTheme === "dark" || savedTheme === "light") setTheme(savedTheme);
     } catch {
       // ignore unavailable storage
     }
@@ -23,10 +28,48 @@ export default function Home() {
     document.documentElement.lang = lang;
   }, [lang]);
 
+  useEffect(() => {
+    if (theme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    if (!("IntersectionObserver" in window)) {
+      els.forEach((el) => el.classList.add("in-view"));
+      return;
+    }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+
   function changeLang(next: Lang) {
     setLang(next);
     try {
       localStorage.setItem(LANG_KEY, next);
+    } catch {
+      // ignore unavailable storage
+    }
+  }
+
+  function changeTheme(next: Theme) {
+    setTheme(next);
+    try {
+      localStorage.setItem(THEME_KEY, next);
     } catch {
       // ignore unavailable storage
     }
@@ -67,6 +110,25 @@ export default function Home() {
               FR
             </button>
           </div>
+          <div className="theme-switch" role="group" aria-label="Theme">
+            <button
+              type="button"
+              className={theme === "dark" ? "is-active" : ""}
+              onClick={() => changeTheme("dark")}
+              aria-pressed={theme === "dark"}
+            >
+              dark
+            </button>
+            <span>/</span>
+            <button
+              type="button"
+              className={theme === "light" ? "is-active" : ""}
+              onClick={() => changeTheme("light")}
+              aria-pressed={theme === "light"}
+            >
+              b&amp;w
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -77,6 +139,7 @@ export default function Home() {
           <span>{t.eyebrow.role}</span>
           <span className="dot" />
           <span>{t.eyebrow.experience}</span>
+          <span className="cursor" aria-hidden="true" />
         </div>
         <h1>{profile.name}</h1>
         <p>{t.hero.lead}</p>
@@ -93,7 +156,7 @@ export default function Home() {
         </div>
       </header>
 
-      <section id="about" className="section about">
+      <section id="about" className="section about reveal">
         <div className="about__col">
           <h2 className="section__label" style={{ margin: 0 }}>
             {t.about.title}
@@ -131,7 +194,7 @@ export default function Home() {
           <span className="work__count">03</span>
         </div>
 
-        <article className="flagship">
+        <article className="flagship reveal">
           <div className="flagship__grid">
             <div className="flagship__body">
               <div className="flagship__title">
@@ -145,7 +208,10 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                sedochap.com <span style={{ color: "var(--accent-strong)" }}>-&gt;</span>
+                sedochap.com{" "}
+                <span className="link-out__arrow" style={{ color: "var(--accent-strong)" }}>
+                  -&gt;
+                </span>
               </a>
               <p>{t.work.sedo.body}</p>
               <ul className="bullets">
@@ -178,15 +244,22 @@ export default function Home() {
         </article>
 
         <div className="cards">
-          {projects.map((p) => (
-            <article className="card" key={p.name}>
+          {projects.map((p, i) => (
+            <article
+              className="card reveal"
+              key={p.name}
+              style={{ transitionDelay: `${i * 80}ms` }}
+            >
               <h3>
                 {p.name}
                 {p.badge ? <span className="tag">{p.badge}</span> : null}
               </h3>
               <p>{p.body[lang]}</p>
               <a className="link-out" href={p.url} target="_blank" rel="noopener noreferrer">
-                {p.urlLabel} <span style={{ color: "var(--accent-strong)" }}>-&gt;</span>
+                {p.urlLabel}{" "}
+                <span className="link-out__arrow" style={{ color: "var(--accent-strong)" }}>
+                  -&gt;
+                </span>
               </a>
               <div className="chips">
                 {p.stack.map((s) => (
@@ -200,7 +273,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="skills" className="section">
+      <section id="skills" className="section reveal">
         <h2 className="section__label">{t.skills.title}</h2>
         <div className="skills">
           {skills.map((s) => (
@@ -211,7 +284,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="contact" className="section--open">
+      <section id="contact" className="section--open reveal">
         <h2 className="section__label">{t.contact.title}</h2>
         <div className="contact">
           <p className="contact__lead">{t.contact.lead}</p>
